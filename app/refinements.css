@@ -1,0 +1,260 @@
+/* Futuristic refinement: restrained depth and precision in the existing palette. */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: linear-gradient(112deg, #0d0d0f 0%, #171719 56%, #0d0d0f 100%);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8102e 28%, #c5a15a 72%, transparent);
+  opacity: 0.72;
+}
+
+.top {
+  position: relative;
+}
+
+.top nav {
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.top nav button {
+  padding: 10px 17px;
+  border-radius: 999px;
+}
+
+.brand {
+  min-width: 64px;
+  justify-content: flex-start;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.brand:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.deb-logo {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+}
+
+.powered {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  white-space: nowrap;
+}
+
+.powered span {
+  color: #c5a15a;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 1.35px;
+  text-transform: uppercase;
+}
+
+.powered img {
+  display: block;
+  width: 108px;
+  max-height: 22px;
+}
+
+.top nav button,
+.tools button {
+  transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.top nav button:hover,
+.tools button:hover {
+  color: #fff;
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.top nav button:hover {
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.9), rgba(145, 10, 31, 0.92));
+  box-shadow: 0 7px 20px rgba(200, 16, 46, 0.22);
+}
+
+.tools button:hover {
+  color: #d5b26b;
+}
+
+.hero {
+  position: relative;
+  border: 1px solid rgba(197, 161, 90, 0.2);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.16);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  z-index: 3;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  clip-path: polygon(0 0, 72px 0, 72px 1px, 1px 1px, 1px 72px, 0 72px, 0 0, 100% 0, 100% 72px, calc(100% - 1px) 72px, calc(100% - 1px) 1px, calc(100% - 72px) 1px, calc(100% - 72px) 0, 100% 0, 100% 100%, calc(100% - 72px) 100%, calc(100% - 72px) calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) calc(100% - 72px), 100% calc(100% - 72px), 100% 100%, 0 100%, 0 calc(100% - 72px), 1px calc(100% - 72px), 1px calc(100% - 1px), 72px calc(100% - 1px), 72px 100%, 0 100%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(200, 16, 46, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(197, 161, 90, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent 72%);
+  opacity: 0.45;
+}
+
+.hero-copy {
+  isolation: isolate;
+}
+
+.feature-game,
+.matchcenter,
+.panel,
+.league-buttons button,
+.fixturelist {
+  border-color: rgba(20, 20, 20, 0.14);
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.07);
+}
+
+.feature-game,
+.matchcenter,
+.panel,
+.league-buttons button {
+  position: relative;
+  overflow: hidden;
+}
+
+.league-buttons button::after,
+.panel::after {
+  content: '';
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  right: -82px;
+  bottom: -85px;
+  pointer-events: none;
+  border: 1px solid rgba(197, 161, 90, 0.14);
+  border-radius: 50%;
+}
+
+.league-buttons button::before,
+.panel::before {
+  content: '';
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  right: -52px;
+  bottom: -52px;
+  pointer-events: none;
+  border: 1px solid rgba(200, 16, 46, 0.12);
+  border-radius: 50%;
+}
+
+.league-buttons button,
+.fixturelist button,
+.story,
+.primary,
+.outline,
+.fullbtn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.league-buttons button:hover,
+.fixturelist button:hover {
+  border-color: #c8102e;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.09);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.story:hover,
+.primary:hover,
+.outline:hover,
+.fullbtn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.primary:hover {
+  box-shadow: 0 10px 26px rgba(200, 16, 46, 0.25);
+}
+
+.live-dot {
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #c5a15a;
+  outline-offset: 3px;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% { box-shadow: 0 0 0 3px #d7193f22; }
+  50% { box-shadow: 0 0 0 7px #d7193f08; }
+}
+
+@media (max-width: 1000px) {
+  .top nav { gap: 22px; }
+  .powered { padding-left: 12px; }
+  .powered span { display: none; }
+  .powered img { width: 88px; }
+}
+
+@media (max-width: 850px) {
+  .powered { margin-left: auto; }
+  .deb-logo { width: 50px; height: 50px; }
+  .top nav {
+    top: 70px;
+    margin: 0;
+    border-radius: 0 0 12px 12px;
+    background: rgba(19, 19, 19, 0.98);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@media (max-width: 520px) {
+  .tools { gap: 13px; }
+  .powered { padding-left: 10px; }
+  .powered img { width: 70px; max-height: 17px; }
+  .deb-logo { width: 46px; height: 46px; }
+  .hero::after { background-size: 34px 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
