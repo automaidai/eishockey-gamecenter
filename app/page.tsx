@@ -296,11 +296,8 @@ export default function Home() {
             <div className="league-master-grid">
               {topLeagueHubs.map((item) => (
                 <div className="league-hub" key={item.name}>
-                    <button className="league-module logo-module" onClick={() => selectLeague(item.name)}>
-                      <span className="module-kicker">LIGA · DEMO</span>
-                      <div className="league-mark"><span>{item.label}</span><strong>{item.code}</strong></div>
-                      <h3>{item.name}</h3>
-                      <span className="module-link">ZUR LIGA <ChevronRight size={15} /></span>
+                    <button className="league-name-rail" onClick={() => selectLeague(item.name)} aria-label={`${item.name} öffnen`}>
+                      <span>{item.name}</span>
                     </button>
 
                     <button className="league-module fixtures-module" onClick={() => nav('spiel')}>
