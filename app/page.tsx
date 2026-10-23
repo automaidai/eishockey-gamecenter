@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, BarChart3, ChevronRight, Menu, Search, Trophy, X } from 'lucide-react';
+import { ArrowRight, ChevronRight, Menu, Search, Trophy, X } from 'lucide-react';
 
 type Page = 'start' | 'liga' | 'spiel' | 'spieler' | 'statistik';
 
@@ -30,49 +30,138 @@ const topLeagueHubs = [
     name: 'Oberliga Nord',
     label: 'NORD',
     code: 'OLN',
-    player: { name: 'Finn Berger', team: 'Hannover Scorpions', number: '27', points: 36 },
+    round: '19. SPIELTAG · FR, 30.10.',
+    fixtures: [
+      ['19:30', 'Hannover Scorpions', 'Saale Bulls Halle'],
+      ['19:30', 'Herner EV', 'Tilburg Trappers'],
+      ['19:30', 'Hannover Indians', 'IceFighters Leipzig'],
+      ['20:00', 'Füchse Duisburg', 'Hammer Eisbären'],
+      ['20:00', 'Rostock Piranhas', 'Herford Ice Dragons'],
+      ['20:00', 'TecArt Black Dragons', 'Moskitos Essen'],
+    ],
     table: [
       ['Hannover Scorpions', 43],
       ['Saale Bulls Halle', 39],
       ['Tilburg Trappers', 35],
+      ['Hannover Indians', 33],
+      ['IceFighters Leipzig', 30],
+      ['Herner EV', 27],
+      ['Moskitos Essen', 25],
+      ['Füchse Duisburg', 22],
+      ['Rostock Piranhas', 20],
+      ['Herford Ice Dragons', 17],
+      ['Hammer Eisbären', 14],
+      ['TecArt Black Dragons', 11],
     ],
-    news: { team: 'Herner EV', headline: 'Indians erwarten intensives Duell am Freitagabend', meta: 'VOR 2 STD.' },
+    news: [
+      ['Herner EV', 'Indians erwarten intensives Duell', 'VOR 2 STD.'],
+      ['Scorpions', 'Vorverkauf für das Spitzenspiel läuft', 'VOR 4 STD.'],
+      ['Saale Bulls', 'Neuzugang steht vor seinem Debüt', 'VOR 6 STD.'],
+      ['Tilburg', 'Trappers melden kompletten Kader', 'GESTERN'],
+    ],
   },
   {
     name: 'Oberliga Süd',
     label: 'SÜD',
     code: 'OLS',
-    player: { name: 'Lukas Reiter', team: 'Heilbronner Falken', number: '19', points: 34 },
+    round: '20. SPIELTAG · FR, 30.10.',
+    fixtures: [
+      ['19:30', 'Heilbronner Falken', 'EV Füssen'],
+      ['19:30', 'Deggendorfer SC', 'Tölzer Löwen'],
+      ['19:30', 'Bietigheim Steelers', 'Memmingen Indians'],
+      ['20:00', 'Erding Gladiators', 'Passau Black Hawks'],
+      ['20:00', 'Stuttgart Rebels', 'Höchstadt Alligators'],
+      ['20:00', 'Lindau Islanders', 'Peiting'],
+    ],
     table: [
       ['Deggendorfer SC', 41],
       ['Heilbronner Falken', 38],
       ['Bietigheim Steelers', 34],
+      ['Memmingen Indians', 32],
+      ['Tölzer Löwen', 29],
+      ['Erding Gladiators', 27],
+      ['Höchstadt Alligators', 25],
+      ['EV Füssen', 23],
+      ['Passau Black Hawks', 21],
+      ['Lindau Islanders', 19],
+      ['Peiting', 17],
+      ['Stuttgart Rebels', 13],
+      ['Bayreuth Tigers', 10],
     ],
-    news: { team: 'EV Füssen', headline: 'Kader komplett: Füssen reist mit voller Stärke an', meta: 'VOR 3 STD.' },
+    news: [
+      ['EV Füssen', 'Füssen reist mit voller Stärke an', 'VOR 3 STD.'],
+      ['Deggendorf', 'DSC fokussiert sich aufs Heimspiel', 'VOR 5 STD.'],
+      ['Heilbronn', 'Falken verlängern mit Verteidiger', 'VOR 7 STD.'],
+      ['Bietigheim', 'Steelers laden zum Familientag', 'GESTERN'],
+    ],
   },
   {
     name: 'Bayernliga',
     label: 'BEV',
     code: 'BYL',
-    player: { name: 'Tobias Kern', team: 'Erding Gladiators', number: '11', points: 31 },
+    round: '12. SPIELTAG · SO, 01.11.',
+    fixtures: [
+      ['17:30', 'EHC Königsbrunn', 'EHC Klostersee'],
+      ['18:00', 'TEV Miesbach', 'ESC Geretsried'],
+      ['18:00', 'Erding Gladiators', 'HC Landsberg'],
+      ['18:00', 'EA Schongau', 'EHC Waldkraiburg'],
+      ['18:00', 'EC Pfaffenhofen', 'EHC Bayreuth'],
+      ['18:30', 'EV Dingolfing', 'ERSC Amberg'],
+      ['18:30', 'Kempten Sharks', 'Buchloe Pirates'],
+      ['19:00', 'Eispiraten Dorfen', 'Pegnitz Ice Dogs'],
+    ],
     table: [
       ['Erding Gladiators', 40],
       ['EHC Königsbrunn', 36],
       ['TEV Miesbach', 33],
+      ['EHC Klostersee', 31],
+      ['Kempten Sharks', 28],
+      ['HC Landsberg', 26],
+      ['ESC Geretsried', 24],
+      ['EHC Waldkraiburg', 22],
+      ['EV Dingolfing', 20],
+      ['EA Schongau', 18],
+      ['Buchloe Pirates', 16],
+      ['ERSC Amberg', 15],
+      ['EC Pfaffenhofen', 13],
+      ['Eispiraten Dorfen', 11],
+      ['Pegnitz Ice Dogs', 9],
+      ['EHC Bayreuth', 7],
     ],
-    news: { team: 'EHC Klostersee', headline: 'Derby-Woche beginnt mit offenem Training', meta: 'VOR 5 STD.' },
+    news: [
+      ['Klostersee', 'Derby-Woche startet mit offenem Training', 'VOR 5 STD.'],
+      ['Königsbrunn', 'Pinguine setzen auf starke Defensive', 'VOR 7 STD.'],
+      ['Miesbach', 'TEV gibt Kader-Update bekannt', 'GESTERN'],
+      ['Landsberg', 'Riverkings erwarten volle Halle', 'GESTERN'],
+    ],
   },
   {
     name: 'DFEL Frauen',
     label: 'FRAUEN',
     code: 'DFEL',
-    player: { name: 'Mia Hartmann', team: 'ECDC Memmingen', number: '23', points: 29 },
+    round: '9. SPIELTAG · SA, 31.10.',
+    fixtures: [
+      ['17:15', 'Mad Dogs Mannheim', 'ESC Planegg'],
+      ['17:30', 'ECDC Memmingen', 'ERC Ingolstadt'],
+      ['18:00', 'Eisbären Berlin', 'EC Bergkamen'],
+      ['19:00', 'Kölner Haie', 'Düsseldorfer EG'],
+    ],
     table: [
       ['ECDC Memmingen', 37],
       ['ERC Ingolstadt', 34],
       ['ESC Planegg', 29],
+      ['Mad Dogs Mannheim', 25],
+      ['Eisbären Berlin', 21],
+      ['EC Bergkamen', 17],
+      ['Kölner Haie', 12],
+      ['Düsseldorfer EG', 8],
     ],
-    news: { team: 'Mad Dogs Mannheim', headline: 'Junges Team nimmt wichtige Punkte ins Visier', meta: 'VOR 6 STD.' },
+    news: [
+      ['Mannheim', 'Junges Team nimmt wichtige Punkte ins Visier', 'VOR 6 STD.'],
+      ['Memmingen', 'Indians bestätigen starke Form', 'VOR 8 STD.'],
+      ['Ingolstadt', 'Pantherinnen vor schwerem Wochenende', 'GESTERN'],
+      ['Planegg', 'ESC setzt weiter auf den Nachwuchs', 'GESTERN'],
+    ],
   },
 ];
 
@@ -183,104 +272,71 @@ export default function Home() {
         )}
       </header>
 
-      <section className="ticker">
-        <div className="ticker-title"><span className="live-dot" /> GAME DAY <small>10 SPIELE · DEMO</small></div>
-        <div className="scores">
-          {games.map((game, index) => (
-            <button key={index} className="score" onClick={() => nav('spiel')}>
-              <span className="score-league">{game.league}</span>
-              <span className={game.live ? 'red' : ''}>{game.status}</span>
-              <div><b>{game.a}</b><strong>{game.sa ?? '–'}</strong></div>
-              <div><b>{game.b}</b><strong>{game.sb ?? '–'}</strong></div>
-            </button>
-          ))}
-        </div>
-      </section>
+      {page !== 'start' && (
+        <section className="ticker">
+          <div className="ticker-title"><span className="live-dot" /> GAME DAY <small>10 SPIELE · DEMO</small></div>
+          <div className="scores">
+            {games.map((game, index) => (
+              <button key={index} className="score" onClick={() => nav('spiel')}>
+                <span className="score-league">{game.league}</span>
+                <span className={game.live ? 'red' : ''}>{game.status}</span>
+                <div><b>{game.a}</b><strong>{game.sa ?? '–'}</strong></div>
+                <div><b>{game.b}</b><strong>{game.sb ?? '–'}</strong></div>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
 
-      <main>
-        <div className="section-bar"><span>DEUTSCHES EISHOCKEY</span><span>SAISON 2026/27 · KONZEPT</span></div>
+      <main className={page === 'start' ? 'home-main' : ''}>
+        {page !== 'start' && <div className="section-bar"><span>DEUTSCHES EISHOCKEY</span><span>SAISON 2026/27 · KONZEPT</span></div>}
 
         {page === 'start' && (
-          <>
-            <section className="league-hubs">
-              <div className="heading">
-                <div><small>TOP-LIGEN · DEMODATEN</small><h1>DEIN DIREKTER WEG ZU DEN <em>STATISTIKEN.</em></h1></div>
-                <button className="textlink" onClick={() => nav('liga')}>ALLE LIGEN <ArrowRight size={16} /></button>
-              </div>
-              {topLeagueHubs.map((item, leagueIndex) => (
-                <article className="league-hub" key={item.name}>
-                  <div className="league-hub-title">
-                    <span>0{leagueIndex + 1}</span>
-                    <div><small>TOP-LIGA</small><h2>{item.name}</h2></div>
-                    <button onClick={() => selectLeague(item.name)}>LIGA ÖFFNEN <ArrowRight size={15} /></button>
-                  </div>
-                  <div className="league-module-grid">
+          <section className="league-hubs" aria-label="Top-Ligen">
+            <div className="league-master-grid">
+              {topLeagueHubs.map((item) => (
+                <div className="league-hub" key={item.name}>
                     <button className="league-module logo-module" onClick={() => selectLeague(item.name)}>
-                      <span className="module-kicker">LIGA</span>
+                      <span className="module-kicker">LIGA · DEMO</span>
                       <div className="league-mark"><span>{item.label}</span><strong>{item.code}</strong></div>
                       <h3>{item.name}</h3>
                       <span className="module-link">ZUR LIGA <ChevronRight size={15} /></span>
                     </button>
 
-                    <button className="league-module player-module" onClick={() => nav('spieler')}>
-                      <span className="module-kicker">TOPSPIELER · DEMO</span>
-                      <div className="player-number">{item.player.number}</div>
-                      <div className="player-copy"><small>{item.player.team}</small><h3>{item.player.name}</h3><strong>{item.player.points} <span>PKT.</span></strong></div>
-                      <span className="module-link">SPIELERPROFIL <ChevronRight size={15} /></span>
+                    <button className="league-module fixtures-module" onClick={() => nav('spiel')}>
+                      <span className="module-kicker">KOMMENDER SPIELTAG · DEMO</span>
+                      <h3>{item.round}</h3>
+                      <div className="compact-fixtures">
+                        {item.fixtures.map((fixture) => (
+                          <div key={`${fixture[1]}-${fixture[2]}`}><b>{fixture[0]}</b><span>{fixture[1]}</span><i>–</i><span>{fixture[2]}</span></div>
+                        ))}
+                      </div>
+                      <span className="module-link">SPIELTAG ÖFFNEN <ChevronRight size={15} /></span>
                     </button>
 
                     <button className="league-module standings-module" onClick={() => openLeagueStats(item.name)}>
-                      <span className="module-kicker">TABELLE · DEMO</span>
+                      <span className="module-kicker">GESAMTE TABELLE · DEMO</span>
                       <div className="mini-table">
                         {item.table.map((team, index) => (
-                          <div key={team[0]}><b>0{index + 1}</b><span>{team[0]}</span><strong>{team[1]}</strong></div>
+                          <div key={team[0]}><b>{index + 1}</b><span>{team[0]}</span><strong>{team[1]}</strong></div>
                         ))}
                       </div>
-                      <span className="module-link">GANZE TABELLE <ChevronRight size={15} /></span>
+                      <span className="module-link">TABELLE ÖFFNEN <ChevronRight size={15} /></span>
                     </button>
 
                     <button className="league-module news-module" onClick={() => selectLeague(item.name)}>
-                      <span className="module-kicker">TEAM NEWS · DEMO</span>
-                      <div className="news-team">{item.news.team}</div>
-                      <h3>{item.news.headline}</h3>
-                      <div className="news-meta"><span>{item.news.meta}</span><span>NEWS</span></div>
-                      <span className="module-link">WEITERLESEN <ChevronRight size={15} /></span>
+                      <span className="module-kicker">4 NEUESTE NEWS · DEMO</span>
+                      <div className="compact-news">
+                        {item.news.map((newsItem) => (
+                          <div key={newsItem[1]}><span>{newsItem[0]}</span><h3>{newsItem[1]}</h3><small>{newsItem[2]}</small></div>
+                        ))}
+                      </div>
+                      <span className="module-link">ALLE NEWS <ChevronRight size={15} /></span>
                     </button>
-                  </div>
-                </article>
+                </div>
               ))}
-            </section>
-
-            <section className="data-dashboard">
-              <div className="heading">
-                <div><small>DATENZENTRALE · DEMO</small><h2>STATISTIKEN <em>IM BLICK.</em></h2></div>
-                <button className="textlink" onClick={() => nav('statistik')}>STATISTIKCENTER <ArrowRight size={16} /></button>
-              </div>
-              <div className="dashboard-grid">
-                <div className="feature-game">
-                  <div className="match-meta"><span><span className="live-dot" /> LIVE · OBERLIGA SÜD</span><span>3. DRITTEL</span></div>
-                  <div className="match-teams">
-                    <div><div className="crest">ER</div><strong>Eisbären<br />Regensburg</strong></div>
-                    <div className="bigscore">3 <span>:</span> 2<small>12:46 · 3. DRITTEL</small></div>
-                    <div><div className="crest gold">SR</div><strong>Starbulls<br />Rosenheim</strong></div>
-                  </div>
-                  <button className="fullbtn" onClick={() => nav('spiel')}>MATCHCENTER ÖFFNEN <ArrowRight size={17} /></button>
-                </div>
-                <div className="table-card">
-                  <div className="table-title"><span>OBERLIGA · FORM</span><BarChart3 size={18} /></div>
-                  <table><thead><tr><th>PL.</th><th>TEAM</th><th>SP.</th><th>PKT.</th></tr></thead><tbody>
-                    {ranking.map((row, index) => <tr key={index}><td><span className={'position ' + (index < 3 ? 'toprank' : '')}>{index + 1}</span></td><td>{row[0]}</td><td>{row[1]}</td><td><b>{row[2]}</b></td></tr>)}
-                  </tbody></table>
-                </div>
-                <div className="leaders-card">
-                  <div className="table-title"><span>TOPSCORER · PUNKTE</span><Trophy size={18} /></div>
-                  {scorers.slice(0, 3).map((row, index) => (
-                    <button key={index} onClick={() => nav('spieler')}><b>0{index + 1}</b><span><strong>{row[0]}</strong><small>{row[1]}</small></span><em>{row[4]}</em></button>
-                  ))}
-                </div>
-              </div>
-            </section>
-          </>
+            </div>
+          </section>
         )}
 
         {page === 'liga' && (
