@@ -990,3 +990,120 @@ input:focus-visible {
     min-height: 0;
   }
 }
+
+/* League rows inspired by the compact three-column statistics reference. */
+.league-master-grid {
+  display: block;
+}
+
+.league-master-grid .league-hub {
+  display: grid;
+  height: 360px;
+  min-height: 0;
+  margin: 0 0 10px;
+  grid-template-columns: 58px repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.league-master-grid .mini-table > div {
+  min-height: 17px;
+}
+
+.league-name-rail {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 0;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 0;
+  border-left: 4px solid var(--gold);
+  background:
+    linear-gradient(180deg, rgba(200, 16, 46, 0.15), transparent 35%),
+    #171719;
+}
+
+.league-name-rail span {
+  color: #fff;
+  font-family: var(--heading-font);
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.league-name-rail:hover {
+  color: var(--gold);
+  opacity: 1;
+}
+
+.league-master-grid .news-module {
+  color: #171717;
+  border-color: rgba(20, 20, 20, 0.13);
+  background:
+    linear-gradient(155deg, transparent 55%, rgba(201, 165, 93, 0.11)),
+    #fff;
+}
+
+.league-master-grid .compact-news {
+  border-top-color: #191919;
+}
+
+.league-master-grid .compact-news > div {
+  border-bottom-color: #e7e3db;
+}
+
+.league-master-grid .compact-news span {
+  color: #a57f3c;
+}
+
+.league-master-grid .compact-news small {
+  color: #8b8b8b;
+}
+
+.league-master-grid .news-module .module-link {
+  color: #b20e29;
+}
+
+@media (max-width: 1000px) {
+  .league-master-grid .league-hub {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .league-name-rail {
+    min-height: 44px;
+    padding: 8px 15px;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    border-bottom: 0;
+    border-left-width: 4px;
+  }
+
+  .league-name-rail span {
+    font-size: 24px;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .league-master-grid .league-hub {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .league-name-rail {
+    grid-column: auto;
+  }
+
+  .league-master-grid .league-module {
+    height: 350px;
+  }
+}
