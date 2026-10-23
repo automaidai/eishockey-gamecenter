@@ -12,7 +12,10 @@ h2,
 h3,
 .bigscore,
 .stat-board strong,
-.focus-card > b,
+.league-mark strong,
+.player-number,
+.mini-table b,
+.mini-table strong,
 .playerstats strong {
   font-family: var(--heading-font);
   font-weight: 800;
@@ -263,150 +266,313 @@ header::after {
   font-size: 8px;
 }
 
-.stats-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(420px, 0.8fr);
-  min-height: 470px;
-  overflow: hidden;
-  color: #fff;
-  border: 1px solid rgba(197, 161, 90, 0.35);
-  background:
-    linear-gradient(115deg, rgba(200, 16, 46, 0.11), transparent 36%),
-    repeating-linear-gradient(35deg, transparent 0, transparent 15px, rgba(255, 255, 255, 0.025) 16px, rgba(255, 255, 255, 0.025) 17px),
-    #151515;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
-}
-
-.stats-intro {
-  padding: 58px 54px;
-}
-
-.stats-intro h1 {
-  margin: 20px 0;
-  font-size: clamp(48px, 5vw, 74px);
-  line-height: 0.94;
-  letter-spacing: -0.5px;
-}
-
-.stats-intro h1 em {
-  color: var(--gold);
-  font-style: normal;
-}
-
-.stats-intro p {
-  max-width: 580px;
-  color: #ccc;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.stat-board {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-left: 1px solid rgba(197, 161, 90, 0.25);
-}
-
-.stat-board > div {
-  display: flex;
-  min-height: 190px;
-  padding: 30px;
-  flex-direction: column;
-  justify-content: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.stat-board span {
-  color: var(--gold);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 1.8px;
-}
-
-.stat-board strong {
-  margin: 7px 0 4px;
-  color: #fff;
-  font-size: 58px;
-  line-height: 1;
-}
-
-.stat-board small {
-  color: #999;
-  font-size: 10px;
-  letter-spacing: 0.5px;
-}
-
-.focus-section,
+.league-hubs,
 .data-dashboard {
   padding-top: 58px;
 }
 
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+.league-hubs > .heading h1 {
+  max-width: 760px;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 0.94;
 }
 
-.focus-card {
-  position: relative;
-  min-height: 245px;
-  overflow: hidden;
-  padding: 24px;
+.league-hubs > .heading h1 em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.league-hub {
+  margin-top: 34px;
+  border-top: 4px solid #191919;
+}
+
+.league-hub-title {
+  display: flex;
+  min-height: 78px;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 16px;
   color: #fff;
-  text-align: left;
-  border: 1px solid #292929;
   background:
-    radial-gradient(circle at 100% 0, rgba(197, 161, 90, 0.22), transparent 44%),
-    linear-gradient(145deg, #1c1c1d, #101011);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    linear-gradient(90deg, rgba(200, 16, 46, 0.16), transparent 34%),
+    repeating-linear-gradient(35deg, transparent 0, transparent 14px, rgba(255, 255, 255, 0.025) 15px, rgba(255, 255, 255, 0.025) 16px),
+    #191919;
 }
 
-.focus-card:hover {
+.league-hub-title > span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: var(--gold);
+  border: 1px solid rgba(201, 165, 93, 0.55);
+  font-family: var(--heading-font);
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.league-hub-title > div {
+  flex: 1;
+}
+
+.league-hub-title small,
+.module-kicker {
+  color: var(--gold);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+}
+
+.league-hub-title h2 {
+  margin-top: 2px;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+
+.league-hub-title button {
+  display: flex;
+  padding: 10px 0 10px 14px;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  border: 0;
+  background: transparent;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.league-module-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  padding-top: 14px;
+}
+
+.league-module {
+  position: relative;
+  display: flex;
+  min-height: 255px;
+  overflow: hidden;
+  padding: 22px;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border: 1px solid rgba(20, 20, 20, 0.13);
+  background: #fff;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.065);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.league-module::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 140px;
+  height: 140px;
+  pointer-events: none;
+  border: 1px solid rgba(201, 165, 93, 0.2);
+  border-radius: 50%;
+}
+
+.league-module:hover {
   opacity: 1;
   transform: translateY(-4px);
   border-color: var(--gold);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.19);
 }
 
-.focus-card > span {
-  color: var(--gold);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 1.8px;
-}
-
-.focus-card > b {
-  display: block;
-  margin-top: 18px;
-  color: rgba(255, 255, 255, 0.13);
-  font-size: 70px;
-  line-height: 0.8;
-}
-
-.focus-card h3 {
-  margin: 20px 0 28px;
-  font-size: 29px;
+.league-module h3 {
   letter-spacing: 0;
 }
 
-.focus-card > div {
+.module-link {
   display: flex;
-  gap: 22px;
-  color: #aaa;
-  font-size: 9px;
+  margin-top: auto;
+  align-items: center;
+  gap: 6px;
+  color: #b20e29;
+  font-size: 8px;
+  font-weight: 900;
   letter-spacing: 1px;
 }
 
-.focus-card > div strong {
-  color: var(--gold);
-  font-size: 14px;
+.logo-module {
+  color: #fff;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(201, 165, 93, 0.24), transparent 33%),
+    linear-gradient(145deg, #1f1f21, #0d0d0e);
 }
 
-.focus-card > svg {
+.league-mark {
+  position: relative;
+  display: grid;
+  width: 110px;
+  height: 110px;
+  margin: 12px auto 10px;
+  place-content: center;
+  align-self: center;
+  text-align: center;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 7px #161616, inset 0 0 0 8px rgba(201, 165, 93, 0.38);
+}
+
+.league-mark span {
+  color: var(--gold);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.league-mark strong {
+  display: block;
+  font-family: var(--heading-font);
+  font-size: 38px;
+  line-height: 0.95;
+}
+
+.logo-module h3 {
+  width: 100%;
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.logo-module .module-link {
+  color: var(--gold);
+}
+
+.player-module {
+  color: #fff;
+  background:
+    linear-gradient(105deg, rgba(200, 16, 46, 0.95), rgba(118, 5, 23, 0.94)),
+    #c8102e;
+}
+
+.player-module .module-kicker {
+  color: #fff0c7;
+}
+
+.player-number {
   position: absolute;
-  right: 20px;
-  bottom: 21px;
+  top: 23px;
+  right: 18px;
+  color: rgba(255, 255, 255, 0.13);
+  font-family: var(--heading-font);
+  font-size: 110px;
+  font-weight: 800;
+  line-height: 0.8;
+}
+
+.player-copy {
+  position: relative;
+  z-index: 1;
+  margin-top: 70px;
+}
+
+.player-copy small {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.player-copy h3 {
+  max-width: 175px;
+  margin: 4px 0 6px;
+  font-size: 30px;
+  line-height: 0.95;
+}
+
+.player-copy > strong {
+  color: #fff0c7;
+  font-family: var(--heading-font);
+  font-size: 28px;
+}
+
+.player-copy > strong span {
+  font-size: 12px;
+}
+
+.player-module .module-link {
+  z-index: 1;
+  color: #fff;
+}
+
+.mini-table {
+  width: 100%;
+  margin-top: 22px;
+  border-top: 3px solid #191919;
+}
+
+.mini-table > div {
+  display: grid;
+  min-height: 45px;
+  grid-template-columns: 30px minmax(0, 1fr) 32px;
+  align-items: center;
+  border-bottom: 1px solid #e7e3db;
+}
+
+.mini-table b {
+  color: var(--gold-dark);
+  font-family: var(--heading-font);
+  font-size: 18px;
+}
+
+.mini-table span {
+  overflow: hidden;
+  font-size: 9px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mini-table strong {
+  color: #c8102e;
+  font-family: var(--heading-font);
+  font-size: 21px;
+  text-align: right;
+}
+
+.news-module {
+  color: #fff;
+  background:
+    linear-gradient(155deg, transparent 42%, rgba(201, 165, 93, 0.14)),
+    repeating-linear-gradient(35deg, transparent 0, transparent 13px, rgba(255, 255, 255, 0.025) 14px, rgba(255, 255, 255, 0.025) 15px),
+    #191919;
+}
+
+.news-team {
+  margin-top: 42px;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.news-module h3 {
+  max-width: 240px;
+  margin: 8px 0 15px;
+  font-size: 27px;
+  line-height: 1;
+}
+
+.news-meta {
+  display: flex;
+  gap: 10px;
+  color: #8f8f8f;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.news-module .module-link {
   color: var(--gold);
 }
 
@@ -590,7 +756,7 @@ input:focus-visible {
   .powered { padding-left: 12px; }
   .powered span { display: none; }
   .powered img { width: 88px; }
-  .focus-grid { grid-template-columns: repeat(2, 1fr); }
+  .league-module-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dashboard-grid { grid-template-columns: 1fr 1fr; }
   .leaders-card { grid-column: 1 / -1; }
   .directory-grid { grid-template-columns: repeat(3, 1fr); }
@@ -606,9 +772,6 @@ input:focus-visible {
     background: rgba(19, 19, 19, 0.98);
     box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28);
   }
-  .stats-hero { grid-template-columns: 1fr; }
-  .stat-board { border-top: 1px solid rgba(197, 161, 90, 0.25); border-left: 0; }
-  .stat-board > div { min-height: 145px; }
   .dashboard-grid { grid-template-columns: 1fr; }
   .leaders-card { grid-column: auto; }
   .directory-grid { grid-template-columns: repeat(2, 1fr); }
@@ -620,12 +783,16 @@ input:focus-visible {
   .powered img { width: 70px; max-height: 17px; }
   .deb-logo { width: 46px; height: 46px; }
   .hero::after { background-size: 34px 34px; }
-  .stats-intro { padding: 40px 23px; }
-  .stats-intro h1 { font-size: 52px; }
-  .stat-board strong { font-size: 43px; }
-  .stat-board > div { min-height: 125px; padding: 21px; }
-  .focus-grid { grid-template-columns: 1fr; }
-  .focus-card { min-height: 220px; }
+  .league-hubs { padding-top: 38px; }
+  .league-hubs > .heading h1 { font-size: 44px; }
+  .league-hub { margin-top: 26px; }
+  .league-hub-title { padding: 12px; gap: 11px; }
+  .league-hub-title > span { width: 42px; height: 42px; }
+  .league-hub-title h2 { font-size: 25px; }
+  .league-hub-title button { font-size: 0; }
+  .league-hub-title button svg { width: 20px; height: 20px; }
+  .league-module-grid { grid-template-columns: 1fr; }
+  .league-module { min-height: 230px; }
   .directory-grid { grid-template-columns: 1fr; }
   .directory-head { padding: 17px; }
 }

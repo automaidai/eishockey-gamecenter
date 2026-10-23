@@ -25,6 +25,57 @@ const focusLeagues = [
   { name: 'Frauen-Bundesliga', short: 'DFEL', teams: 8, games: 56, accent: 'FRAUEN' },
 ];
 
+const topLeagueHubs = [
+  {
+    name: 'Oberliga Nord',
+    label: 'NORD',
+    code: 'OLN',
+    player: { name: 'Finn Berger', team: 'Hannover Scorpions', number: '27', points: 36 },
+    table: [
+      ['Hannover Scorpions', 43],
+      ['Saale Bulls Halle', 39],
+      ['Tilburg Trappers', 35],
+    ],
+    news: { team: 'Herner EV', headline: 'Indians erwarten intensives Duell am Freitagabend', meta: 'VOR 2 STD.' },
+  },
+  {
+    name: 'Oberliga Süd',
+    label: 'SÜD',
+    code: 'OLS',
+    player: { name: 'Lukas Reiter', team: 'Heilbronner Falken', number: '19', points: 34 },
+    table: [
+      ['Deggendorfer SC', 41],
+      ['Heilbronner Falken', 38],
+      ['Bietigheim Steelers', 34],
+    ],
+    news: { team: 'EV Füssen', headline: 'Kader komplett: Füssen reist mit voller Stärke an', meta: 'VOR 3 STD.' },
+  },
+  {
+    name: 'Bayernliga',
+    label: 'BEV',
+    code: 'BYL',
+    player: { name: 'Tobias Kern', team: 'Erding Gladiators', number: '11', points: 31 },
+    table: [
+      ['Erding Gladiators', 40],
+      ['EHC Königsbrunn', 36],
+      ['TEV Miesbach', 33],
+    ],
+    news: { team: 'EHC Klostersee', headline: 'Derby-Woche beginnt mit offenem Training', meta: 'VOR 5 STD.' },
+  },
+  {
+    name: 'DFEL Frauen',
+    label: 'FRAUEN',
+    code: 'DFEL',
+    player: { name: 'Mia Hartmann', team: 'ECDC Memmingen', number: '23', points: 29 },
+    table: [
+      ['ECDC Memmingen', 37],
+      ['ERC Ingolstadt', 34],
+      ['ESC Planegg', 29],
+    ],
+    news: { team: 'Mad Dogs Mannheim', headline: 'Junges Team nimmt wichtige Punkte ins Visier', meta: 'VOR 6 STD.' },
+  },
+];
+
 const leagueGroups = [
   {
     title: 'DEB-Ligen',
@@ -96,6 +147,11 @@ export default function Home() {
     nav('liga');
   };
 
+  const openLeagueStats = (name: string) => {
+    setLeague(name);
+    nav('statistik');
+  };
+
   return (
     <>
       <div className="demo">DESIGN-PROTOTYP · ALLE SPIELSTÄNDE UND STATISTIKEN SIND FIKTIVE DEMODATEN</div>
@@ -146,38 +202,53 @@ export default function Home() {
 
         {page === 'start' && (
           <>
-            <section className="stats-hero">
-              <div className="stats-intro">
-                <div className="eyebrow"><span className="line" /> DAS GAMECENTER FÜR ALLE DEB-LIGEN</div>
-                <h1>ALLE LIGEN.<br />ALLE SPIELE.<br /><em>ALLE ZAHLEN.</em></h1>
-                <p>Ergebnisse, Tabellen, Spielerwerte und Live-Statistiken des deutschen Eishockeys – von der Oberliga bis zum Nachwuchs.</p>
-                <div className="actions">
-                  <button className="primary" onClick={() => nav('statistik')}>STATISTIKEN ÖFFNEN <ArrowRight size={17} /></button>
-                  <button className="outline" onClick={() => nav('liga')}>ALLE LIGEN <ChevronRight size={17} /></button>
-                </div>
-              </div>
-              <div className="stat-board">
-                <div><span>WETTBEWERBE</span><strong>70+</strong><small>DEB & Landesverbände</small></div>
-                <div><span>HEUTE</span><strong>10</strong><small>Spiele im Game Day</small></div>
-                <div><span>LIVE</span><strong>02</strong><small>Partien im Ticker</small></div>
-                <div><span>DATEN</span><strong>24/7</strong><small>Tabellen & Scorer</small></div>
-              </div>
-            </section>
-
-            <section className="focus-section">
+            <section className="league-hubs">
               <div className="heading">
-                <div><small>LIGEN IM FOKUS</small><h2>DIE WICHTIGSTEN <em>WETTBEWERBE.</em></h2></div>
+                <div><small>TOP-LIGEN · DEMODATEN</small><h1>DEIN DIREKTER WEG ZU DEN <em>STATISTIKEN.</em></h1></div>
                 <button className="textlink" onClick={() => nav('liga')}>ALLE LIGEN <ArrowRight size={16} /></button>
               </div>
-              <div className="focus-grid">
-                {focusLeagues.map((item) => (
-                  <button className="focus-card" key={item.name} onClick={() => selectLeague(item.name)}>
-                    <span>{item.accent}</span><b>{item.short}</b><h3>{item.name}</h3>
-                    <div><span><strong>{item.teams}</strong> TEAMS</span><span><strong>{item.games}</strong> SPIELE</span></div>
-                    <ChevronRight size={20} />
-                  </button>
-                ))}
-              </div>
+              {topLeagueHubs.map((item, leagueIndex) => (
+                <article className="league-hub" key={item.name}>
+                  <div className="league-hub-title">
+                    <span>0{leagueIndex + 1}</span>
+                    <div><small>TOP-LIGA</small><h2>{item.name}</h2></div>
+                    <button onClick={() => selectLeague(item.name)}>LIGA ÖFFNEN <ArrowRight size={15} /></button>
+                  </div>
+                  <div className="league-module-grid">
+                    <button className="league-module logo-module" onClick={() => selectLeague(item.name)}>
+                      <span className="module-kicker">LIGA</span>
+                      <div className="league-mark"><span>{item.label}</span><strong>{item.code}</strong></div>
+                      <h3>{item.name}</h3>
+                      <span className="module-link">ZUR LIGA <ChevronRight size={15} /></span>
+                    </button>
+
+                    <button className="league-module player-module" onClick={() => nav('spieler')}>
+                      <span className="module-kicker">TOPSPIELER · DEMO</span>
+                      <div className="player-number">{item.player.number}</div>
+                      <div className="player-copy"><small>{item.player.team}</small><h3>{item.player.name}</h3><strong>{item.player.points} <span>PKT.</span></strong></div>
+                      <span className="module-link">SPIELERPROFIL <ChevronRight size={15} /></span>
+                    </button>
+
+                    <button className="league-module standings-module" onClick={() => openLeagueStats(item.name)}>
+                      <span className="module-kicker">TABELLE · DEMO</span>
+                      <div className="mini-table">
+                        {item.table.map((team, index) => (
+                          <div key={team[0]}><b>0{index + 1}</b><span>{team[0]}</span><strong>{team[1]}</strong></div>
+                        ))}
+                      </div>
+                      <span className="module-link">GANZE TABELLE <ChevronRight size={15} /></span>
+                    </button>
+
+                    <button className="league-module news-module" onClick={() => selectLeague(item.name)}>
+                      <span className="module-kicker">TEAM NEWS · DEMO</span>
+                      <div className="news-team">{item.news.team}</div>
+                      <h3>{item.news.headline}</h3>
+                      <div className="news-meta"><span>{item.news.meta}</span><span>NEWS</span></div>
+                      <span className="module-link">WEITERLESEN <ChevronRight size={15} /></span>
+                    </button>
+                  </div>
+                </article>
+              ))}
             </section>
 
             <section className="data-dashboard">
